@@ -1,0 +1,49 @@
+CREATE TABLE Themes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Domaines (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Administrateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Etudiants (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Memoires (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(255) NOT NULL,
+    description TEXT,
+    fichier BLOB(255),
+    theme_id INT,
+    domaine_id INT,
+    FOREIGN KEY (theme_id) REFERENCES Themes(id),
+    FOREIGN KEY (domaine_id) REFERENCES Domaines(id)
+);
+
+CREATE TABLE Admin_Memoires (
+    admin_id INT,
+    memoire_id INT,
+    PRIMARY KEY (admin_id, memoire_id),
+    FOREIGN KEY (admin_id) REFERENCES Administrateurs(id),
+    FOREIGN KEY (memoire_id) REFERENCES Memoires(id)
+);
+
+CREATE TABLE Etudiant_Memoires (
+    etudiant_id INT,
+    memoire_id INT,
+    PRIMARY KEY (etudiant_id, memoire_id),
+    FOREIGN KEY (etudiant_id) REFERENCES Etudiants(id),
+    FOREIGN KEY (memoire_id) REFERENCES Memoires(id)
+);
+
