@@ -1,5 +1,5 @@
 <?php
-// Assurez-vous que l'ID du mémoire est spécifié dans l'URL
+// Recuperer l'ID du mémoire
 if(isset($_GET['id'])) {
     // Inclure le fichier de connexion à la base de données
     require_once("bd.php");
@@ -8,7 +8,7 @@ if(isset($_GET['id'])) {
     $memoire_id = intval($_GET['id']);
     if($memoire_id <= 0) {
         // Rediriger vers une page d'erreur si l'ID du mémoire n'est pas valide
-        header("Location: erreur.php");
+        echo ("L'id du memoire non specifie");
         exit();
     }
 
@@ -34,7 +34,7 @@ if(isset($_GET['id'])) {
         exit();
     } else {
         // Rediriger vers une page d'erreur si le mémoire n'est pas trouvé
-        header("Location: erreur.php");
+        echo (" memoire non trouve");
         exit();
     }
 } else {
