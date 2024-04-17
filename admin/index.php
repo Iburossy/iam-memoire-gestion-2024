@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Connexion à la base de données (à adapter selon votre configuration)
+// Connexion à la base de données
 require_once("../bd.php");
 
 // Traitement de la connexion d'un étudiant
